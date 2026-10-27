@@ -1,0 +1,15 @@
+prometheus:
+ enabled: true
+ additionalServiceMonitors:
+   - name: app-sm
+     namespace: default
+labels:
+    serviceMonitorSelector: prometheus
+endpoints:
+  - port: scaletestapp-port # Имя порта из вашего Service.
+namespaceSelector:
+  matchNames:
+      - default
+selector:
+    matchLabels:
+          app: scaletestapp # Этот тег должен совпадать с тегом в вашем Service.
